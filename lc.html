@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Suit — Fine Shirts, Stitched to Order</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#F4EAD8;
+    --cream:#FBF5E9;
+    --maroon:#591E2C;
+    --maroon-deep:#46141F;
+    --gold:#BD9A4B;
+    --gold-soft:#D9C291;
+    --ink:#2B221C;
+    --ink-soft:#7A6E5E;
+    --line:#E3D2B0;
+    --font-display:'Playfair Display', serif;
+    --font-body:'EB Garamond', serif;
+    --maxw:1180px;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:var(--font-body);
+    background:var(--parchment);
+    color:var(--ink);
+    font-size:18px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{ display:block; max-width:100%; }
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .smallcaps{
+    font-family:var(--font-body);
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  /* ---------- Crest (signature element) ---------- */
+  .crest{ display:block; }
+  .crest text{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    border-bottom:1px solid var(--gold-soft);
+    padding:14px 0;
+    text-align:center;
+  }
+  .topbar .smallcaps{ color:var(--maroon); }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(244,234,216,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--gold-soft);
+  }
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+  }
+  .nav-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:var(--maroon);
+  }
+  .nav-brand .crest{ width:38px; height:38px; color:var(--maroon); }
+  .nav-brand span{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:21px;
+    letter-spacing:.04em;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+    font-size:15px;
+  }
+  .nav-links a:not(.btn){
+    text-decoration:none;
+    color:var(--ink);
+    letter-spacing:.02em;
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .nav-links a:not(.btn):hover{
+    color:var(--maroon);
+    border-color:var(--gold);
+  }
+  @media (max-width:760px){
+    .nav-links a:not(.btn){ display:none; }
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:.02em;
+    text-decoration:none;
+    padding:13px 28px;
+    border:1.5px solid var(--maroon);
+    border-radius:2px;
+    cursor:pointer;
+    transition:transform .15s ease, background .2s ease, color .2s ease;
+    background:transparent;
+  }
+  .btn-primary{
+    background:var(--maroon);
+    color:var(--cream);
+  }
+  .btn-primary:hover{
+    background:var(--maroon-deep);
+    transform:translateY(-2px);
+  }
+  .btn-ghost{ color:var(--maroon); }
+  .btn-ghost:hover{
+    background:var(--maroon);
+    color:var(--cream);
+    transform:translateY(-2px);
+  }
+  .nav .btn{ padding:10px 20px; font-size:14px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    text-align:center;
+    padding:96px 0 80px;
+  }
+  .hero .crest{
+    width:96px; height:96px;
+    color:var(--maroon);
+    margin:0 auto 28px;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(48px, 9vw, 92px);
+    letter-spacing:.01em;
+    margin-bottom:14px;
+  }
+  .hero .tagline{
+    font-style:italic;
+    font-size:22px;
+    color:var(--maroon);
+    margin-bottom:24px;
+  }
+  .hero .lede{
+    max-width:54ch;
+    margin:0 auto 36px;
+    font-size:19px;
+    color:var(--ink-soft);
+  }
+  .hero-rule{
+    width:64px; height:1px;
+    background:var(--gold);
+    margin:0 auto 28px;
+  }
+  .hero-stats{
+    display:flex;
+    justify-content:center;
+    gap:64px;
+    margin-top:48px;
+  }
+  .hero-stats div{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:30px;
+    color:var(--maroon);
+  }
+  .hero-stats span{
+    display:block;
+    font-family:var(--font-body);
+    font-size:13px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+
+  /* ---------- Section heads ---------- */
+  .section{ padding:88px 0; }
+  .section-head{
+    text-align:center;
+    max-width:620px;
+    margin:0 auto 60px;
+  }
+  .section-head h2{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(32px, 5vw, 48px);
+    margin-top:10px;
+    margin-bottom:14px;
+  }
+  .section-head p{
+    color:var(--ink-soft);
+    font-size:18px;
+  }
+
+  /* ---------- Collection plates ---------- */
+  .collection{ background:var(--cream); border-top:1px solid var(--gold-soft); border-bottom:1px solid var(--gold-soft); }
+  .plate-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:48px 40px;
+  }
+  .plate{ text-align:center; }
+  .plate-frame{
+    position:relative;
+    border:1px solid var(--gold);
+    padding:10px;
+    margin-bottom:22px;
+  }
+  .plate-frame::before,
+  .plate-frame::after{
+    content:'';
+    position:absolute;
+    width:7px; height:7px;
+    background:var(--gold);
+    transform:rotate(45deg);
+  }
+  .plate-frame::before{ top:-4px; left:-4px; }
+  .plate-frame::after{ bottom:-4px; right:-4px; }
+  .plate-frame-inner{
+    border:1px solid var(--gold-soft);
+    overflow:hidden;
+    aspect-ratio:4/5;
+  }
+  .plate-frame-inner img{
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+  .plate-num{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:15px;
+    color:var(--gold);
+    letter-spacing:.12em;
+    margin-bottom:6px;
+  }
+  .plate h3{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:26px;
+    margin-bottom:10px;
+  }
+  .plate p{
+    color:var(--ink-soft);
+    font-size:17px;
+    max-width:38ch;
+    margin:0 auto 18px;
+  }
+  .plate-foot{
+    display:inline-flex;
+    align-items:center;
+    gap:18px;
+    border-top:1px solid var(--gold-soft);
+    padding-top:14px;
+  }
+  .plate-price{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:19px;
+    color:var(--maroon);
+  }
+  .plate-order{
+    font-family:var(--font-body);
+    font-style:italic;
+    font-size:16px;
+    text-decoration:underline;
+    text-decoration-color:var(--gold);
+    text-underline-offset:4px;
+    color:var(--ink);
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:0;
+    transition:color .2s ease;
+  }
+  .plate-order:hover{ color:var(--maroon); }
+
+  @media (max-width:760px){
+    .plate-grid{ grid-template-columns:1fr; gap:56px; }
+  }
+
+  /* ---------- The Royal Promise ---------- */
+  .promise-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+  }
+  .promise-item{
+    padding:0 36px;
+    text-align:center;
+    border-left:1px solid var(--gold-soft);
+  }
+  .promise-item:first-child{ border-left:none; padding-left:0; }
+  .promise-item:last-child{ padding-right:0; }
+  .promise-num{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:16px;
+    color:var(--gold);
+    letter-spacing:.18em;
+    margin-bottom:14px;
+  }
+  .promise-item h3{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:24px;
+    margin-bottom:12px;
+  }
+  .promise-item p{
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+  @media (max-width:760px){
+    .promise-grid{ grid-template-columns:1fr; gap:48px; }
+    .promise-item{ border-left:none; padding:0; border-top:1px solid var(--gold-soft); padding-top:36px; }
+    .promise-item:first-child{ border-top:none; padding-top:0; }
+  }
+
+  /* ---------- Atelier ---------- */
+  .atelier{
+    background:var(--maroon);
+    color:var(--cream);
+  }
+  .atelier-grid{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .atelier .crest{ width:140px; height:140px; color:var(--gold); }
+  .atelier h2{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(30px, 4.5vw, 44px);
+    margin-bottom:18px;
+  }
+  .atelier p{
+    color:#E8D9C4;
+    font-size:18px;
+    max-width:48ch;
+    margin-bottom:30px;
+  }
+  .atelier-info{
+    display:grid;
+    grid-template-columns:repeat(2, auto);
+    gap:18px 56px;
+    margin-bottom:34px;
+  }
+  .atelier-info dt{
+    font-family:var(--font-body);
+    font-size:12px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:4px;
+  }
+  .atelier-info dd{
+    font-family:var(--font-display);
+    font-size:19px;
+  }
+  @media (max-width:860px){
+    .atelier-grid{ grid-template-columns:1fr; text-align:center; }
+    .atelier .crest{ margin:0 auto; }
+    .atelier p{ margin-left:auto; margin-right:auto; }
+    .atelier-info{ grid-template-columns:1fr; justify-content:center; }
+  }
+
+  /* ---------- Closing CTA ---------- */
+  .cta{
+    text-align:center;
+    padding:100px 0;
+  }
+  .cta .crest{ width:64px; height:64px; color:var(--gold); margin:0 auto 24px; }
+  .cta h2{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-style:italic;
+    font-size:clamp(30px, 5vw, 48px);
+    margin-bottom:32px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--gold-soft);
+    padding:36px 0;
+    text-align:center;
+  }
+  footer p{
+    font-size:14px;
+    color:var(--ink-soft);
+    letter-spacing:.04em;
+  }
+  footer a{ text-decoration:none; color:var(--maroon); }
+
+  /* ---------- Reveal ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="smallcaps">Royal Suit — Laddhawala, Muzaffarnagar</span>
+</div>
+
+<header class="nav">
+  <div class="wrap nav-row">
+    <a href="#top" class="nav-brand">
+      <svg class="crest" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="60" cy="60" r="48" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="60" y="76" text-anchor="middle" font-size="46" fill="currentColor">RS</text>
+        <line x1="60" x2="60" y1="2" y2="11" stroke="currentColor" stroke-width="2"/>
+        <line x1="60" x2="60" y1="109" y2="118" stroke="currentColor" stroke-width="2"/>
+        <line x1="2" x2="11" y1="60" y2="60" stroke="currentColor" stroke-width="2"/>
+        <line x1="109" x2="118" y1="60" y2="60" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      <span>Royal Suit</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#collection">The Collection</a>
+      <a href="#promise">The Promise</a>
+      <a href="#atelier">The Atelier</a>
+      <a class="btn btn-primary" href="#" onclick="orderOnWhatsApp('Hi Raza, I would like to order a shirt from Royal Suit. Please share more details.'); return false;">Order Now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <svg class="crest" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="60" cy="60" r="48" fill="none" stroke="currentColor" stroke-width="1"/>
+      <text x="60" y="76" text-anchor="middle" font-size="46" fill="currentColor">RS</text>
+      <line x1="60" x2="60" y1="2" y2="11" stroke="currentColor" stroke-width="2"/>
+      <line x1="60" x2="60" y1="109" y2="118" stroke="currentColor" stroke-width="2"/>
+      <line x1="2" x2="11" y1="60" y2="60" stroke="currentColor" stroke-width="2"/>
+      <line x1="109" x2="118" y1="60" y2="60" stroke="currentColor" stroke-width="2"/>
+    </svg>
+    <h1>Royal Suit</h1>
+    <p class="tagline">Fine shirts, cut and stitched to order in Laddhawala</p>
+    <div class="hero-rule"></div>
+    <p class="lede">Every shirt begins as a length of cloth and your measurements. We cut it, stitch it by hand, and send it to your door — one price, one promise, no two shirts quite the same.</p>
+    <a class="btn btn-primary" href="#" onclick="orderOnWhatsApp('Hi Raza, I would like to order a shirt from Royal Suit. Please share more details.'); return false;">Place an Order on WhatsApp</a>
+    <div class="hero-stats">
+      <div>₹2,000<span>Per Shirt</span></div>
+      <div>7 Days<span>Made &amp; Delivered</span></div>
+    </div>
+  </section>
+
+  <!-- COLLECTION -->
+  <section class="collection section" id="collection">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="smallcaps">The Collection</span>
+        <h2>From the current run</h2>
+        <p>Four shirts, cut from four different cloths. Send Raza your measurements on WhatsApp, and any of these can be made in your size.</p>
+      </div>
+
+      <div class="plate-grid">
+
+        <div class="plate reveal">
+          <div class="plate-frame">
+            <div class="plate-frame-inner">
+              <img src="ChatGPT Image Jun 13, 2026, 04_22_58 PM.png" alt="The Ivory Field — ivory mandarin-collar shirt with woven tape trim">
+            </div>
+          </div>
+          <div class="plate-num">Plate I</div>
+          <h3>The Ivory Field</h3>
+          <p>Textured ivory cotton, mandarin collar, four utility pockets and a woven tape trim across the chest.</p>
+          <div class="plate-foot">
+            <div class="plate-price">₹2,000</div>
+            <button class="plate-order" onclick="orderOnWhatsApp('Hi Raza, I would like to order The Ivory Field shirt (Rs 2000) from Royal Suit.')">Order this piece</button>
+          </div>
+        </div>
+
+        <div class="plate reveal">
+          <div class="plate-frame">
+            <div class="plate-frame-inner">
+              <img src="ChatGPT Image Jun 13, 2026, 04_09_05 PM.png" alt="The Camel Stripe — camel pinstripe classic-collar shirt">
+            </div>
+          </div>
+          <div class="plate-num">Plate II</div>
+          <h3>The Camel Stripe</h3>
+          <p>A fine camel-on-white pinstripe, classic collar, clean yoke and twin button-flap chest pockets.</p>
+          <div class="plate-foot">
+            <div class="plate-price">₹2,000</div>
+            <button class="plate-order" onclick="orderOnWhatsApp('Hi Raza, I would like to order The Camel Stripe shirt (Rs 2000) from Royal Suit.')">Order this piece</button>
+          </div>
+        </div>
+
+        <div class="plate reveal">
+          <div class="plate-frame">                 
+            <div class="plate-frame-inner">
+              <img src="ChatGPT Image Jun 13, 2026, 04_12_44 PM.png" alt="The Midnight Hour — navy mandarin-collar shirt with woven tape trim">
+            </div>
+          </div>
+          <div class="plate-num">Plate III</div>
+          <h3>The Midnight Hour</h3>
+          <p>Deep navy cotton, mandarin collar, relaxed safari cut with a contrast woven tape trim.</p>
+          <div class="plate-foot">
+            <div class="plate-price">₹2,000</div>
+            <button class="plate-order" onclick="orderOnWhatsApp('Hi Raza, I would like to order The Midnight Hour shirt (Rs 2000) from Royal Suit.')">Order this piece</button>
+          </div>
+        </div>
+
+        <div class="plate reveal">
+          <div class="plate-frame">
+            <div class="plate-frame-inner">
+              <img src="Screenshot 2026-06-13 162807.png" alt="The Claret Reserve — burgundy mandarin-collar shirt with box pockets">
+            </div>
+          </div>
+          <div class="plate-num">Plate IV</div>
+          <h3>The Claret Reserve</h3>
+          <p>A rich burgundy overshirt, mandarin collar, structured box pockets and an easy, relaxed fit.</p>
+          <div class="plate-foot">
+            <div class="plate-price">₹2,000</div>
+            <button class="plate-order" onclick="orderOnWhatsApp('Hi Raza, I would like to order The Claret Reserve shirt (Rs 2000) from Royal Suit.')">Order this piece</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- THE ROYAL PROMISE -->
+  <section class="section" id="promise">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="smallcaps">The Royal Promise</span>
+        <h2>Three articles, kept on every order</h2>
+      </div>
+      <div class="promise-grid">
+        <div class="promise-item reveal">
+          <div class="promise-num">I.</div>
+          <h3>One Price</h3>
+          <p>Every shirt is ₹2,000, cut to your own measurements — no hidden charges, no fitting fees.</p>
+        </div>
+        <div class="promise-item reveal">
+          <div class="promise-num">II.</div>
+          <h3>Hand-Stitched</h3>
+          <p>Each piece is cut and sewn by hand in our Laddhawala workshop, made specially for you.</p>
+        </div>
+        <div class="promise-item reveal">
+          <div class="promise-num">III.</div>
+          <h3>Seven Days</h3>
+          <p>Parcelled and shipped to your address within seven days of confirming your order.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATELIER -->
+  <section class="atelier section" id="atelier">
+    <div class="wrap atelier-grid">
+      <svg class="crest reveal" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="60" cy="60" r="48" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="60" y="76" text-anchor="middle" font-size="46" fill="currentColor">RS</text>
+        <line x1="60" x2="60" y1="2" y2="11" stroke="currentColor" stroke-width="2"/>
+        <line x1="60" x2="60" y1="109" y2="118" stroke="currentColor" stroke-width="2"/>
+        <line x1="2" x2="11" y1="60" y2="60" stroke="currentColor" stroke-width="2"/>
+        <line x1="109" x2="118" y1="60" y2="60" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      <div class="reveal">
+        <span class="smallcaps" style="color:var(--gold)">The Atelier</span>
+        <h2>Royal Suit, Laddhawala</h2>
+        <p>Run by Raza out of Laddhawala, Muzaffarnagar — every shirt that leaves the workshop is cut and stitched in-house. Write in on WhatsApp with your fabric choice and measurements to begin.</p>
+        <div class="atelier-info">
+          <div>
+            <dt>Proprietor</dt>
+            <dd>Raza</dd>
+          </div>
+          <div>
+            <dt>WhatsApp</dt>
+            <dd>+91 90276 21847</dd>
+          </div>
+          <div>
+            <dt>Address</dt>
+            <dd>Laddhawala, Muzaffarnagar, Uttar Pradesh</dd>
+          </div>
+          <div>
+            <dt>Delivery</dt>
+            <dd>7 days, made to order</dd>
+          </div>
+        </div>
+        <a class="btn btn-ghost" href="#" style="border-color:var(--gold); color:var(--cream)" onclick="orderOnWhatsApp('Hi Raza, I would like to know more about Royal Suit shirts.'); return false;">Write to Raza on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="cta wrap">
+    <svg class="crest reveal" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="60" cy="60" r="48" fill="none" stroke="currentColor" stroke-width="1"/>
+      <text x="60" y="76" text-anchor="middle" font-size="46" fill="currentColor">RS</text>
+    </svg>
+    <h2 class="reveal">"Cut to measure.<br>Stitched with care."</h2>
+    <a class="btn btn-primary" href="#" onclick="orderOnWhatsApp('Hi Raza, I would like to order a shirt from Royal Suit. Please share more details.'); return false;">Order on WhatsApp →</a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© Royal Suit, Laddhawala, Muzaffarnagar &nbsp;·&nbsp; <a href="#" onclick="orderOnWhatsApp('Hi Raza, I would like to order a shirt from Royal Suit. Please share more details.'); return false;">WhatsApp +91 90276 21847</a></p>
+  </div>
+</footer>
+
+<script>
+  function orderOnWhatsApp(message){
+    var url = 'https://wa.me/919027621847?text=' + encodeURIComponent(message);
+    window.open(url, '_blank');
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(function(el){
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
